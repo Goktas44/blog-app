@@ -9,7 +9,7 @@ const heroContent = {
     { 
       label: "Start Reading", 
       variant: "primary",
-      href: "/blogs"
+      href: "/blog"
     },
     { 
       label: "Subscribe Newsletter", 
