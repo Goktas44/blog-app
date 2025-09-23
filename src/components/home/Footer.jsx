@@ -91,7 +91,7 @@ const Footer = () => {
             href="mailto:destek@pakfiliz.com"
             className="text-secondary-600 hover:underline"
           >
-            destek@pakfiliz.com
+            destek@gmail.com
           </a>
         </div>
       </div>
