@@ -30,24 +30,24 @@ const getFullYear = () => new Date().getFullYear();
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-b from-amber-100 to-orange-200 text-white px-6 md:px-20 py-10 flex flex-col items-center justify-center w-full gap-5">
+    <footer className="bg-gradient-to-b border-t border-gray-300 to-amber-100  from-amber-50 text-gray-700 px-6 md:px-20 py-10 flex flex-col items-center justify-center w-full gap-5">
       <div className="max-w-7xl grid grid-cols-2 md:grid-cols-3 gap-4 p-4 items-center">
         {/*logo  */}
         <div className="flex flex-col gap-2 text-sm font-medium w-full items-center justify-center">
-          <h1 className="text-2xl font-bold font-serif text-gray-400">
+          <h1 className="text-2xl font-bold font-serif text-gray-800">
             DevBlog
           </h1>
         </div>
         {/*linkler  */}
         <div className="flex flex-col gap-2 text-sm font-medium w-full items-center justify-center">
-          <h2 className="text-lg font-bold font-serif underline text-gray-400 ">
+          <h2 className="text-lg font-bold font-serif underline text-gray-800">
             Linkler
           </h2>
           {footerLinks.map((link, index) => (
             <Link
               key={index}
               href={link.href}
-              className="hover:text-blue-300 transition-colors duration-300"
+              className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
             >
               {link.label}
             </Link>
@@ -55,14 +55,14 @@ const Footer = () => {
         </div>{" "}
         {/*linkler  */}
         <div className="flex flex-col gap-2 text-sm font-medium w-full items-center justify-center">
-          <h2 className="text-lg font-bold font-serif underline text-gray-400 ">
+          <h2 className="text-lg font-bold font-serif underline text-gray-800">
             Linkler
           </h2>
           {footerLinks.map((link, index) => (
             <Link
               key={index}
               href={link.href}
-              className="hover:text-blue-300 transition-colors duration-300"
+              className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
             >
               {link.label}
             </Link>
@@ -82,14 +82,14 @@ const Footer = () => {
               >
                 <Icon
                   icon={icon}
-                  className="w-8 h-8 hover:text-secondary-600 hover:bg-gradient-to-b hover:from-blue-900 hover:to-blue-200 transition-colors duration-300 p-1 rounded-2xl"
+                  className="w-8 h-8 text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-300 p-1 rounded-2xl"
                 />
               </a>
             ))}
           </div>
           <a
             href="mailto:destek@pakfiliz.com"
-            className="text-secondary-600 hover:underline"
+            className="text-gray-600 hover:text-blue-600 hover:underline transition-colors duration-300"
           >
             destek@gmail.com
           </a>

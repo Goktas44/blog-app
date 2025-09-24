@@ -68,9 +68,9 @@ const HeroSection = () => {
               key={index}
               onClick={() => handleButtonClick(button)}
               disabled={button.action === 'newsletter' && isSubscribing}
-              className={`px-8 py-3 rounded-lg font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+              className={`px-8 py-3 rounded-lg   font-serif transition-colors cursor-pointer hover:scale-200 duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
                 button.variant === 'primary'
-                  ? 'bg-gray-900 text-white hover:bg-gray-800 focus:ring-gray-900 disabled:opacity-50'
+                  ? 'bg-gray-900 text-white hover:bg-amber-50 hover:border hover:border-gray-900 hover:text-black focus:ring-gray-900 disabled:opacity-50'
                   : 'border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white focus:ring-gray-900 disabled:opacity-50'
               }`}
               aria-label={button.label}
