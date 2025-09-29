@@ -52,21 +52,6 @@ const Footer = () => {
               {link.label}
             </Link>
           ))}
-        </div>{" "}
-        {/*linkler  */}
-        <div className="flex flex-col gap-2 text-sm font-medium w-full items-center justify-center">
-          <h2 className="text-lg font-bold font-serif underline text-gray-800">
-            Linkler
-          </h2>
-          {footerLinks.map((link, index) => (
-            <Link
-              key={index}
-              href={link.href}
-              className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
-            >
-              {link.label}
-            </Link>
-          ))}
         </div>
         {/* Sağ: Sosyal Medya + Mail */}
         <div className="flex flex-col gap-3 text-sm w-full items-center justify-center">
