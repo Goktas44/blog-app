@@ -1,6 +1,7 @@
-
 import HeroSection from "../components/home/HeroSection";
 import Card from "../components/ui/Card";
+import Link from "next/link";
+
 export default function Home() {
   const featuredPosts = [
     {
@@ -41,18 +42,17 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredPosts.map((post, index) => (
               <Card key={index} post={post}></Card>
-
             ))}
           </div>
           <div className="text-center mt-12">
-            <button className="bg-amber-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-amber-700 transition-colors">
-              View All Articles
-            </button>
+            <Link href="/article">
+              <button className="bg-amber-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-amber-700 transition-colors">
+                View All Articles
+              </button>
+            </Link>
           </div>
         </div>
       </section>
-
-
     </div>
   );
 }

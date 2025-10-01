@@ -5,8 +5,7 @@ import { useCallback, useState } from 'react';
 // Navigation links configuration
 const navigationLinks = [
   { href: "/", label: "Home" },
-  { href: "/blog", label: "Blogs" },
-  { href: "/article", label: "Article" },
+  { href: "/article", label: "Articles" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];

@@ -40,14 +40,14 @@ const Footer = () => {
         </div>
         {/*linkler  */}
         <div className="flex flex-col gap-2 text-sm font-medium w-full items-center justify-center">
-          <h2 className="text-lg font-bold font-serif underline text-gray-800">
+          <h2 className="text-lg font-bold  font-serif underline underline-offset-4 text-gray-800">
             Linkler
           </h2>
           {footerLinks.map((link, index) => (
             <Link
               key={index}
               href={link.href}
-              className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
+              className="text-gray-600 hover:text-amber-400 transition-colors duration-300"
             >
               {link.label}
             </Link>
@@ -67,14 +67,14 @@ const Footer = () => {
               >
                 <Icon
                   icon={icon}
-                  className="w-8 h-8 text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-300 p-1 rounded-2xl"
+                  className="w-8 h-8 text-gray-600 hover:text-amber-400 hover:bg-amber-50 transition-colors duration-300 p-1 rounded-2xl"
                 />
               </a>
             ))}
           </div>
           <a
             href="mailto:destek@pakfiliz.com"
-            className="text-gray-600 hover:text-blue-600 hover:underline transition-colors duration-300"
+            className="text-gray-600 hover:text-amber-400 hover:underline transition-colors duration-300"
           >
             destek@gmail.com
           </a>
