@@ -27,6 +27,14 @@ export default function Home() {
       date: "2024-03-10",
       author: "Mike Johnson",
       readTime: "6 min read"
+    },
+    {
+      id: 4,
+      title: "Building Responsive Layouts with Tailwind CSS",
+      excerpt: "Create beautiful and responsive designs using Tailwind CSS utility classes.",
+      date: "2024-03-10",
+      author: "Mike Johnson",
+      readTime: "6 min read"
     }
   ];
 
