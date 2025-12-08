@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useMemo } from "react";
 import Card from "../../components/ui/Card";
 
 // Mock data for design purposes
@@ -12,6 +13,7 @@ const mockBlogs = [
     author: "John Doe",
     date: "2024-01-15",
     readTime: "5 min read",
+    category: "Technology",
   },
   {
     id: 2,
@@ -21,6 +23,7 @@ const mockBlogs = [
     author: "Jane Smith",
     date: "2024-01-12",
     readTime: "8 min read",
+    category: "Design",
   },
   {
     id: 3,
@@ -30,6 +33,7 @@ const mockBlogs = [
     author: "Mike Johnson",
     date: "2024-01-10",
     readTime: "6 min read",
+    category: "Development",
   },
   {
     id: 4,
@@ -39,6 +43,7 @@ const mockBlogs = [
     author: "Sarah Wilson",
     date: "2024-01-08",
     readTime: "7 min read",
+    category: "Design",
   },
   {
     id: 5,
@@ -48,6 +53,7 @@ const mockBlogs = [
     author: "David Brown",
     date: "2024-01-05",
     readTime: "10 min read",
+    category: "Development",
   },
   {
     id: 6,
@@ -57,10 +63,56 @@ const mockBlogs = [
     author: "Emily Davis",
     date: "2024-01-03",
     readTime: "4 min read",
+    category: "Technology",
   },
 ];
 
 const BlogPage = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All Categories");
+  const [sortBy, setSortBy] = useState("Date");
+  const [selectedReadTime, setSelectedReadTime] = useState("All Time");
+
+  const filteredAndSortedBlogs = useMemo(() => {
+    return mockBlogs
+      .filter((post) => {
+        // Search Filter
+        const matchesSearch =
+          post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+
+        // Category Filter
+        const matchesCategory =
+          selectedCategory === "All Categories" ||
+          post.category === selectedCategory;
+
+        // Read Time Filter
+        // Extract number from "X min read"
+        const readTimeMinutes = parseInt(post.readTime);
+        let matchesReadTime = true;
+
+        if (selectedReadTime === "< 5 min") {
+          matchesReadTime = readTimeMinutes < 5;
+        } else if (selectedReadTime === "5-8 min") {
+          matchesReadTime = readTimeMinutes >= 5 && readTimeMinutes <= 8;
+        } else if (selectedReadTime === "> 8 min") {
+          matchesReadTime = readTimeMinutes > 8;
+        }
+
+        return matchesSearch && matchesCategory && matchesReadTime;
+      })
+      .sort((a, b) => {
+        if (sortBy === "Date") {
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
+        } else if (sortBy === "Title") {
+          return a.title.localeCompare(b.title);
+        } else if (sortBy === "Author") {
+          return a.author.localeCompare(b.author);
+        }
+        return 0;
+      });
+  }, [searchQuery, selectedCategory, sortBy, selectedReadTime]);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100">
       <div className="container mx-auto px-4 py-16">
@@ -76,11 +128,13 @@ const BlogPage = () => {
         </div>
 
         {/* Search and Filter Section */}
-        <div className="mb-8 flex flex-col md:flex-row gap-4 justify-between items-center">
-          <div className="relative w-full md:w-96">
+        <div className="mb-8 flex flex-col lg:flex-row gap-4 justify-between items-center">
+          <div className="relative w-full lg:w-96">
             <input
               type="text"
               placeholder="Search blog posts..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full px-4 py-3 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-200"
             />
             <div className="absolute inset-y-0 left-0 flex items-center pl-3">
@@ -100,26 +154,52 @@ const BlogPage = () => {
             </div>
           </div>
 
-          <div className="flex gap-2">
-            <select className="px-4 py-3 text-gray-700  bg-white border border-gray-300 rounded-b-xl focus:outline-none focus:border-amber-500">
+          <div className="flex flex-wrap gap-2 justify-center">
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              className="px-4 py-3 text-gray-700 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-amber-500"
+            >
               <option>All Categories</option>
               <option>Technology</option>
               <option>Design</option>
               <option>Development</option>
             </select>
-            <select className="px-4 py-3 text-gray-700 bg-white border border-gray-300 rounded-b-xl focus:outline-none focus:border-amber-500">
-              <option>Sort by Date</option>
-              <option>Sort by Title</option>
-              <option>Sort by Author</option>
+
+            <select
+              value={selectedReadTime}
+              onChange={(e) => setSelectedReadTime(e.target.value)}
+              className="px-4 py-3 text-gray-700 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-amber-500"
+            >
+              <option>All Time</option>
+              <option>&lt; 5 min</option>
+              <option>5-8 min</option>
+              <option>&gt; 8 min</option>
+            </select>
+
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              className="px-4 py-3 text-gray-700 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-amber-500"
+            >
+              <option value="Date">Sort by Date</option>
+              <option value="Title">Sort by Title</option>
+              <option value="Author">Sort by Author</option>
             </select>
           </div>
         </div>
 
         {/* Blog Posts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {mockBlogs.map((post) => (
-            <Card key={post.id} post={post} />
-          ))}
+          {filteredAndSortedBlogs.length > 0 ? (
+            filteredAndSortedBlogs.map((post) => (
+              <Card key={post.id} post={post} />
+            ))
+          ) : (
+            <div className="col-span-full text-center py-10 text-gray-500">
+              No posts found matching your criteria.
+            </div>
+          )}
         </div>
 
         {/* Load More Button */}

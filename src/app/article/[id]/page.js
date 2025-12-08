@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
 
 // Mock data for demonstration
@@ -32,18 +32,21 @@ const mockArticle = {
 };
 
 export default function ArticlePage({ params }) {
+  const { id } = use(params);
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
     // In a real application, you would fetch the article data based on the ID
-    // For now, we're using mock data
+    // For now, we're using mock data.
+    // NOTE: This mock logic always loads the same article for demo purposes.
+    // In a real app, you'd verify if (id === articleId)
     setTimeout(() => {
       setArticle(mockArticle);
       setLoading(false);
     }, 500);
-  }, [params.id]);
+  }, [id]);
 
   if (loading) {
     return (
@@ -73,7 +76,7 @@ export default function ArticlePage({ params }) {
   return (
     <div className="bg-amber-50 min-h-screen py-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <button 
+        <button
           onClick={() => router.back()}
           className="mb-6 flex items-center text-amber-600 hover:text-amber-800"
         >
@@ -82,13 +85,13 @@ export default function ArticlePage({ params }) {
           </svg>
           Back to Articles
         </button>
-        
+
         <article className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="h-64 bg-gradient-to-br from-amber-100 to-orange-200"></div>
-          
+
           <div className="p-8">
             <h1 className="text-3xl font-bold text-gray-900 mb-4">{article.title}</h1>
-            
+
             <div className="flex items-center justify-between text-sm text-gray-500 mb-6">
               <div className="flex items-center space-x-2">
                 <span>By {article.author}</span>
@@ -97,8 +100,8 @@ export default function ArticlePage({ params }) {
               </div>
               <span>{article.readTime}</span>
             </div>
-            
-            <div 
+
+            <div
               className="prose max-w-none"
               dangerouslySetInnerHTML={{ __html: article.content }}
             />
