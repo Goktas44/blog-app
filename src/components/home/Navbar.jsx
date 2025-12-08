@@ -5,6 +5,7 @@ import { useCallback, useState } from 'react';
 // Navigation links configuration
 const navigationLinks = [
   { href: "/", label: "Home" },
+  { href: "/blog", label: "Blog" },
   { href: "/article", label: "Articles" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
@@ -77,11 +78,10 @@ const Navbar = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber-300 focus:ring-offset-2 ${
-                  link.variant === "primary"
+                className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber-300 focus:ring-offset-2 ${link.variant === "primary"
                     ? "bg-amber-300 hover:bg-amber-300 text-white shadow-md hover:shadow-lg transform hover:scale-105"
                     : "text-gray-700 hover:text-amber-300 border border-gray-300 hover:border-amber-300 hover:bg-blue-50"
-                }`}
+                  }`}
               >
                 {link.label}
               </Link>
@@ -153,11 +153,10 @@ const Navbar = () => {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`block px-4 py-3 rounded-lg text-base font-semibold text-center transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                      link.variant === "primary"
+                    className={`block px-4 py-3 rounded-lg text-base font-semibold text-center transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${link.variant === "primary"
                         ? "bg-amber-300 hover:bg-amber-400 text-white shadow-md"
                         : "text-gray-700 hover:text-white hover:bg-amber-400 border border-gray-300"
-                    }`}
+                      }`}
                     onClick={closeMenu}
                     role="menuitem"
                   >
