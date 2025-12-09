@@ -23,6 +23,15 @@ const socialLinks = [
     icon: "mdi:facebook",
     href: "https://facebook.com",
     label: "Facebook",
+  }, {
+    icon: "mdi:linkedin",
+    href: "https://linkedin.com",
+    label: "LinkedIn",
+  },
+  {
+    icon: "mdi:github",
+    href: "https://github.com",
+    label: "GitHub",
   },
 ];
 
@@ -73,10 +82,10 @@ const Footer = () => {
             ))}
           </div>
           <a
-            href="mailto:destek@pakfiliz.com"
+            href="mailto:goktasabdurrahman44@gmail.com"
             className="text-gray-600 hover:text-amber-400 hover:underline transition-colors duration-300"
           >
-            destek@gmail.com
+            goktasabdurrahman44@gmail.com
           </a>
         </div>
       </div>
