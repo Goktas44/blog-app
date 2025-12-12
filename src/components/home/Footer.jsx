@@ -2,8 +2,7 @@ import { Icon } from "@iconify/react";
 import Link from "next/link";
 const footerLinks = [
   { label: "Home", href: "/" },
-  { label: "Articles", href: "/articles" },
-  { label: "Blog", href: "/blog" },
+  { label: "Article", href: "/article" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];

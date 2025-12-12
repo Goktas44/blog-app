@@ -1,8 +1,33 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #fffbeb;
   --foreground: #171717;
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --input-bg: #ffffff;
+  --input-border: #d1d5db;
+  --nav-bg: #ffffff;
+  --nav-border: #e5e7eb;
+  --amber-primary: #d97706;
+  --amber-secondary: #fcd34d;
+  --gradient-from: #fffbeb;
+  --gradient-to: #fed7aa;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --card-bg: #1a1a1a;
+  --card-border: #2a2a2a;
+  --input-bg: #1a1a1a;
+  --input-border: #3a3a3a;
+  --nav-bg: #111111;
+  --nav-border: #2a2a2a;
+  --amber-primary: #f59e0b;
+  --amber-secondary: #fbbf24;
+  --gradient-from: #0a0a0a;
+  --gradient-to: #1a1a1a;
 }
 
 @theme inline {
@@ -12,15 +37,77 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode specific styles */
+.dark .bg-white {
+  background-color: var(--card-bg) !important;
+}
+
+.dark .bg-gray-50 {
+  background-color: #151515 !important;
+}
+
+.dark .bg-amber-50,
+.dark .bg-gradient-to-br {
+  background: linear-gradient(to bottom right, var(--gradient-from), var(--gradient-to)) !important;
+}
+
+.dark .text-gray-900 {
+  color: #f3f4f6 !important;
+}
+
+.dark .text-gray-800 {
+  color: #e5e7eb !important;
+}
+
+.dark .text-gray-700 {
+  color: #d1d5db !important;
+}
+
+.dark .text-gray-600 {
+  color: #9ca3af !important;
+}
+
+.dark .text-gray-500 {
+  color: #6b7280 !important;
+}
+
+.dark .border-gray-200,
+.dark .border-gray-300 {
+  border-color: var(--card-border) !important;
+}
+
+.dark .shadow-lg,
+.dark .shadow-md {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark input,
+.dark select {
+  background-color: var(--input-bg) !important;
+  border-color: var(--input-border) !important;
+  color: var(--foreground) !important;
+}
+
+.dark input::placeholder {
+  color: #6b7280 !important;
+}
+
+.dark .bg-gradient-to-br.from-amber-100.to-orange-200 {
+  background: linear-gradient(to bottom right, #78350f, #9a3412) !important;
+}
+
+.dark nav {
+  background-color: var(--nav-bg) !important;
+  border-color: var(--nav-border) !important;
+}
+
+.dark footer {
+  background-color: var(--nav-bg) !important;
 }
